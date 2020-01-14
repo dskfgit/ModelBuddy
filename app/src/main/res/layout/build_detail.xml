@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".BuildDetailActivity">
+
+    <TextView
+        android:id="@+id/build_name"
+        android:text="Name"
+        android:textIsSelectable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="?android:attr/textAppearanceLarge"
+        tools:context=".BuildDetailFragment" />
+
+    <TextView
+        android:id="@+id/build_desc"
+        android:text="Description"
+        android:textIsSelectable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintStart_toEndOf="@+id/build_name"
+        app:layout_constraintTop_toBottomOf="@+id/build_name"
+        style="?android:attr/textAppearanceLarge"
+        tools:context=".BuildDetailFragment" />
+
+    <ImageView
+        android:id="@+id/build_thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/a123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/build_desc" />
+
+    <Button
+        android:id="@+id/build_take_thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="takePhoto"
+        android:text="Take Photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/build_thumbnail" />
+
+
+</android.support.constraint.ConstraintLayout>

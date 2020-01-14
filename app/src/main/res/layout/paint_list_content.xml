@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:layout_constraintDimensionRatio="H,16:9"
+        app:cardCornerRadius="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/paintInsideCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
+
+            <ImageView
+                android:id="@+id/paint_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:contentDescription="Paint Palette"
+                android:minWidth="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/code"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="ID"
+                android:textStyle="bold"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintStart_toEndOf="@+id/paint_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_gravity="start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="NAME"
+                android:textStyle="italic"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintStart_toEndOf="@+id/code"
+                app:layout_constraintTop_toTopOf="parent"
+                 />
+
+            <TextView
+                android:id="@+id/label_remaining"
+                android:text="Remain:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:minWidth="30dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintStart_toEndOf="@+id/paint_image"
+                app:layout_constraintTop_toBottomOf="@+id/code" />
+
+            <TextView
+                android:id="@+id/remaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="100"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintStart_toEndOf="@+id/label_remaining"
+                app:layout_constraintTop_toBottomOf="@+id/code" />
+
+            <TextView
+                android:id="@+id/label_qty"
+                android:text="Qty:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:minWidth="30dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintStart_toEndOf="@+id/remaining"
+                app:layout_constraintTop_toBottomOf="@+id/code" />
+
+            <TextView
+                android:id="@+id/qty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="1"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintStart_toEndOf="@+id/label_qty"
+                app:layout_constraintTop_toBottomOf="@+id/code"
+                app:layout_constraintTop_toTopOf="@+id/remaining" />
+
+            <TextView
+                android:id="@+id/label_needToBuy"
+                android:text="Buy?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:minWidth="30dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintStart_toEndOf="@+id/qty"
+                app:layout_constraintTop_toBottomOf="@+id/code" />
+
+            <TextView
+                android:id="@+id/needToBuy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="N"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:layout_constraintStart_toEndOf="@+id/label_needToBuy"
+                app:layout_constraintTop_toBottomOf="@+id/code"
+                app:layout_constraintTop_toTopOf="@+id/qty"
+                 />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
