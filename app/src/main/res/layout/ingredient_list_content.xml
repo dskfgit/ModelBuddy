@@ -18,6 +18,31 @@
         android:layout_gravity="start">
 
         <TextView
+            android:id="@+id/ingredient_label_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:minWidth="30dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Parts:"
+            android:textAppearance="?attr/textAppearanceListItem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ingredient_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="3"
+            android:textAppearance="?attr/textAppearanceListItem"
+            app:layout_constraintStart_toEndOf="@+id/ingredient_label_part"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/ingredient_label_paint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +52,7 @@
             android:paddingEnd="4dp"
             android:text="Paint:"
             android:textAppearance="?attr/textAppearanceListItem"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ingredient_part"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -43,29 +68,31 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/ingredient_label_part"
+            android:id="@+id/ingredient_label_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:minWidth="30dp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:text="Parts:"
+            android:text="Desc:"
             android:textAppearance="?attr/textAppearanceListItem"
             app:layout_constraintStart_toEndOf="@+id/ingredient_paint"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/ingredient_part"
+            android:id="@+id/ingredient_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:text="3"
+            android:text="Some description"
             android:textAppearance="?attr/textAppearanceListItem"
-            app:layout_constraintStart_toEndOf="@+id/ingredient_label_part"
+            app:layout_constraintStart_toEndOf="@+id/ingredient_label_desc"
             app:layout_constraintTop_toTopOf="parent" />
+
+
 
     </android.support.constraint.ConstraintLayout>
 

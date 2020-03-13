@@ -1,21 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ingredientsInsideRecipe"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/recipe_detail"
-        style="?android:attr/textAppearanceLarge"
+        android:id="@+id/recipe_desc"
+        style="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Recipe Ingredients"
+        android:padding="4dp"
+        android:text="Description"
         android:textIsSelectable="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".RecipeDetailFragment" />
+    <TextView
+        android:id="@+id/recipe_volume"
+        style="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="Volume"
+        android:textIsSelectable="true"
+        tools:context=".RecipeDetailFragment" />
+    <TextView
+        android:id="@+id/recipe_source"
+        style="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="Source"
+        android:textIsSelectable="true"
+        tools:context=".RecipeDetailFragment" />
+    <TextView
+        android:id="@+id/recipe_label_ingredients"
+        style="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Ingredients:"
+        android:textIsSelectable="true"
         tools:context=".RecipeDetailFragment" />
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ingredient_list"
+        android:name="com.thesetediousthings.modelbuddy.ui.main.RecipeDetailFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".RecipeDetailFragment"
+        tools:listitem="@layout/ingredient_list_content" />
+    </android.support.design.widget.CoordinatorLayout>
+    <TextView
+        android:id="@+id/recipe_label_comments"
+        style="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Comments:"
+        android:textIsSelectable="true"
+        tools:context=".RecipeDetailFragment" />
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/comment_list"
+            android:name="com.thesetediousthings.modelbuddy.ui.main.RecipeDetailFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            app:layoutManager="LinearLayoutManager"
+            tools:context=".RecipeDetailFragment"
+            tools:listitem="@layout/comment_list_content" />
+    </android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>

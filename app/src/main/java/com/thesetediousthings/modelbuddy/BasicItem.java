@@ -1,6 +1,7 @@
 package com.thesetediousthings.modelbuddy;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class BasicItem {
 
@@ -8,6 +9,7 @@ public class BasicItem {
 
     private Date created;
     private int itemId;
+    private ArrayList<Comment> comments;
 
     public Date getCreated() {
         return created;
@@ -29,4 +31,14 @@ public class BasicItem {
         return new Integer(itemId).toString();
     }
 
+    public void addComment(Comment comment) {
+        if (comments == null) {
+            comments = new ArrayList<Comment>();
+        }
+        comments.add(comment);
+    }
+
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
 }

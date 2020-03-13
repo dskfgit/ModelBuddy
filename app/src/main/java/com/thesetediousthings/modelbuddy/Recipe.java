@@ -6,6 +6,9 @@ public class Recipe extends Item {
 
     private int volumeInMls;
     private String forColour;
+    private String source;
+
+
 
     private ArrayList<Ingredient> ingredients;
 
@@ -46,8 +49,19 @@ public class Recipe extends Item {
         return forColour;
     }
 
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
     public void setForColour(String forColour) {
         this.forColour = forColour;
     }
 
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
+    }
 }

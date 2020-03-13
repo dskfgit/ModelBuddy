@@ -33,11 +33,13 @@ public class BuildDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        BuildsFactory bf = BuildsFactory.getInstance();
+
         if (getArguments().containsKey(BasicItem.ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = Builds.ITEM_MAP.get(getArguments().getString(BasicItem.ARG_ITEM_ID));
+            mItem = bf.getBuilds().get(getArguments().getString(BasicItem.ARG_ITEM_ID));
             /*
             Activity activity = this.getActivity();
 
@@ -57,6 +59,7 @@ public class BuildDetailFragment extends Fragment {
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.build_name)).setText(mItem.getName());
+            ((TextView) rootView.findViewById(R.id.build_desc)).setText(mItem.getDesc());
         }
 
         return rootView;

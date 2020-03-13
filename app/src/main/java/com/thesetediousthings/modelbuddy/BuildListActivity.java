@@ -89,7 +89,8 @@ public class BuildListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Builds.ITEMS, mTwoPane));
+        BuildsFactory bf = BuildsFactory.getInstance();
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, bf.getItems(), mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter

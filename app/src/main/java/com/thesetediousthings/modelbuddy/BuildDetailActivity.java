@@ -2,10 +2,13 @@ package com.thesetediousthings.modelbuddy;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +16,14 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * An activity representing a single Build detail screen. This
@@ -23,6 +34,12 @@ import android.widget.TextView;
 public class BuildDetailActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_TAKE_PHOTO = 1;
+
+    private BuildsFactory bf;
+    private String currentPhotoPath;
+    private String itemId;
+    private Build currBuild;
 
     //private ImageView thumbView;
 
@@ -61,14 +78,22 @@ public class BuildDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
+            itemId = getIntent().getStringExtra(BasicItem.ARG_ITEM_ID);
             arguments.putString(BasicItem.ARG_ITEM_ID,
-                    getIntent().getStringExtra(BasicItem.ARG_ITEM_ID));
+                    itemId);
             BuildDetailFragment fragment = new BuildDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.build_detail_container, fragment)
                     .commit();
+
+            bf = BuildsFactory.getInstance();
+            currBuild = bf.getBuildbyId(itemId);
+
         }
+
+
+
     }
 
     @Override
@@ -93,6 +118,19 @@ public class BuildDetailActivity extends AppCompatActivity {
 
     }
 
+    /*
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File image = new File(getFilesDir(), imageFileName);
+
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+    */
+
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -107,9 +145,29 @@ public class BuildDetailActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
             //Image view for thumbnail
-            ImageView thumbView = (ImageView) findViewById(R.id.build_thumbnail);
-
+            ImageView thumbView = findViewById(R.id.build_thumbnail);
             thumbView.setImageBitmap(imageBitmap);
+
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String imageFileName = "JPEG_" + timeStamp + "_";
+            File image = new File(getFilesDir(), imageFileName);
+            currentPhotoPath = image.getAbsolutePath();
+
+            int size = imageBitmap.getByteCount();
+            ByteBuffer byteBuffer = ByteBuffer.allocate(size);
+            imageBitmap.copyPixelsToBuffer(byteBuffer);
+            try {
+                OutputStream os = new FileOutputStream(image);
+                os.write(byteBuffer.array());
+                os.close();
+            }
+            catch(IOException ioe) {
+                ioe.printStackTrace();
+            }
+
+            currBuild.setImagePath(currentPhotoPath);
+            bf.setBuild(currBuild);
+
         }
     }
 

@@ -88,7 +88,8 @@ public class RecipeListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Recipes.ITEMS, mTwoPane));
+        RecipeFactory recipeFactory = RecipeFactory.getInstance();
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, recipeFactory.getItems(), mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
@@ -144,6 +145,7 @@ public class RecipeListActivity extends AppCompatActivity {
             holder.mVolView.setText(String.valueOf(recipe.getVolumeInMls()));
             //Get the umber of ingredients...
             holder.mNumIngredsView.setText(String.valueOf(recipe.getNumIngredients()));
+            holder.mSourceView.setText(recipe.getSource());
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
@@ -159,6 +161,7 @@ public class RecipeListActivity extends AppCompatActivity {
             final TextView mDescView;
             final TextView mVolView;
             final TextView mNumIngredsView;
+            final TextView mSourceView;
 
             ViewHolder(View view) {
                 super(view);
@@ -166,6 +169,7 @@ public class RecipeListActivity extends AppCompatActivity {
                 mDescView = (TextView) view.findViewById(R.id.recipe_desc);
                 mVolView = (TextView) view.findViewById(R.id.recipe_volume);
                 mNumIngredsView = (TextView) view.findViewById(R.id.recipe_num_ingredients);
+                mSourceView = (TextView) view.findViewById(R.id.recipe_source);
             }
         }
     }

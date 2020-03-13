@@ -13,6 +13,11 @@ public class Build extends Item {
     private String brand;
     private int scale;
     private float cost;
+    private String imagePath;
+
+    public String getImagePath() { return imagePath; }
+
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 
     public String getBrand() {
         return brand;
@@ -37,4 +42,5 @@ public class Build extends Item {
     public void setCost(float cost) {
         this.cost = cost;
     }
+
 }
